@@ -1,4 +1,5 @@
-/* eslint-disable jsx-a11y/label-has-for */
+// eslint-disable-next-line max-len
+/* eslint-disable jsx-a11y/label-has-for,import/no-unresolved,jsx-a11y/label-has-associated-control,react/destructuring-assignment */
 
 import React, {PureComponent} from 'react';
 import {TextMask, InputAdapter, SpanAdapter} from 'react-text-mask-hoc';

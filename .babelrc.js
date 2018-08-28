@@ -1,27 +1,37 @@
 const env = process.env.NODE_ENV;
 
-const presets = ['react', 'stage-2'];
-const plugins = [];
+const presets = ["@babel/preset-react"];
+const plugins = [
+    "@babel/plugin-proposal-class-properties",
+    ["@babel/plugin-proposal-decorators", {legacy: true}],
+    "@babel/plugin-proposal-export-namespace-from",
+    "@babel/plugin-proposal-function-sent",
+    "@babel/plugin-proposal-json-strings",
+    "@babel/plugin-proposal-numeric-separator",
+    "@babel/plugin-proposal-throw-expressions",
+    '@babel/plugin-proposal-object-rest-spread',
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-syntax-import-meta"
+];
 
-if (env === 'test') {
+if (env === "test") {
     presets.unshift([
-        'env',
+        "@babel/preset-env",
         {
-            targets: {node: 'current'},
+            targets: { node: "current" }
         }
     ]);
 }
 
-if (env === 'production') {
+if (env === "production") {
     presets.unshift([
-        'env',
+        "@babel/preset-env",
         {
-            targets: {node: 6, browsers: ['> 1%']},
+            targets: {node: 6, browsers: ["> 1%"]},
             modules: false
         }
     ]);
 
-    plugins.push('external-helpers')
 }
 
-module.exports = {presets, plugins};
+module.exports = { presets, plugins };

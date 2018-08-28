@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import React, {Component} from 'react';
 import {TextInput} from 'react-native'; // eslint-disable-line
 import PropTypes from 'prop-types';
@@ -28,22 +29,6 @@ export default class TextInputAdapter extends Component {
         return this._selection || 0;
     }
 
-    _selection;
-    _lastOnChangeEvent;
-
-    _setNativeProps(value, caretPosition) {
-        this.input.setNativeProps({text: value});
-        this.input.setNativeProps({selection: {start: caretPosition, end: caretPosition}});
-    }
-
-    _getRef = (ref) => {
-        this.input = ref;
-    };
-
-    _onChange = ({nativeEvent}) => {
-        this._lastOnChangeEvent = nativeEvent;
-    };
-
     // onChange() runs before onSelectionChange(), so when text-mask gets selection
     // it's a previous value instead of the current one.
     _onSelectionChange = (event) => {
@@ -54,6 +39,23 @@ export default class TextInputAdapter extends Component {
             this._lastOnChangeEvent = undefined;
         }
     };
+
+    _getRef = (ref) => {
+        this.input = ref;
+    };
+
+    _onChange = ({nativeEvent}) => {
+        this._lastOnChangeEvent = nativeEvent;
+    };
+
+    _setNativeProps(value, caretPosition) {
+        this.input.setNativeProps({text: value});
+        this.input.setNativeProps({selection: {start: caretPosition, end: caretPosition}});
+    }
+
+    _selection;
+
+    _lastOnChangeEvent;
 
     render() {
         const {value, caretPosition, onChange, ...rest} = this.props;

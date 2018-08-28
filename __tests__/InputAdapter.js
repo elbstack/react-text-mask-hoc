@@ -16,6 +16,7 @@ function setup(options = {}) {
 
     class StatefulWrapper extends Component {
         state = {
+            // eslint-disable-next-line react/destructuring-assignment
             value: this.props.value || '',
         };
 

@@ -1,4 +1,4 @@
-/* eslint-disable no-use-before-define */
+/* eslint-disable no-use-before-define,import/no-unresolved,react/destructuring-assignment */
 
 import React, {PureComponent} from 'react';
 import {View, Text, StyleSheet} from 'react-native';

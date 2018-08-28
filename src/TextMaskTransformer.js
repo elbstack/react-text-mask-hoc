@@ -9,13 +9,14 @@ function getSafeRawValue(inputValue) {
     if (isNumber(inputValue)) return String(inputValue);
 
     throw new Error(
-        "The 'value' provided to Text Mask needs to be a string or a number. The value " +
-            `received was:\n\n ${JSON.stringify(inputValue)}`
+        "The 'value' provided to Text Mask needs to be a string or a number. The value "
+            + `received was:\n\n ${JSON.stringify(inputValue)}`
     );
 }
 
 export default class TextMaskTransformer {
     previousConformedValue = undefined;
+
     previousPlaceholder = undefined;
 
     update({
@@ -38,10 +39,10 @@ export default class TextMaskTransformer {
         // If such a `mask` is passed, we destructure it below, so the rest of the code can work normally
         // as if a separate `mask` and a `pipe` were passed.
         if (
-            providedMask != null &&
-            typeof providedMask === 'object' &&
-            providedMask.pipe != null &&
-            providedMask.mask != null
+            providedMask != null
+            && typeof providedMask === 'object'
+            && providedMask.pipe != null
+            && providedMask.mask != null
         ) {
             /* eslint-disable no-param-reassign, prefer-destructuring */
             pipe = providedMask.pipe;

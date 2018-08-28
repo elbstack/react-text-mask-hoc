@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {propsEqual} from 'react-shallow-equal';
@@ -69,8 +70,9 @@ export default class TextMask extends PureComponent {
         }
 
         if (!propsEqual(this.props, nextProps, {ignore})) {
-            const value =
-                nextProps.isControlled === true && nextProps.value != null ? nextProps.value : this.state.value;
+            const value = nextProps.isControlled === true && nextProps.value != null
+                ? nextProps.value
+                : this.state.value;
             const nextUpdate = this._update({...nextProps, value});
             if (nextUpdate !== null) {
                 this.setState(nextUpdate);
@@ -82,17 +84,17 @@ export default class TextMask extends PureComponent {
         return this.state.value;
     }
 
-    _update = props =>
-        this.textMaskTransformer.update({
-            value: props.value,
-            caretPosition: this.component != null ? this.component.caretPosition : 0,
-            mask: props.mask,
-            guide: props.guide,
-            pipe: props.pipe,
-            placeholderChar: props.placeholderChar,
-            keepCharPositions: props.keepCharPositions,
-            showMask: props.showMask,
-        });
+    _update = props => this.textMaskTransformer.update({
+        value: props.value,
+        caretPosition:
+                this.component != null ? this.component.caretPosition : 0,
+        mask: props.mask,
+        guide: props.guide,
+        pipe: props.pipe,
+        placeholderChar: props.placeholderChar,
+        keepCharPositions: props.keepCharPositions,
+        showMask: props.showMask,
+    });
 
     _getRef = (comp) => {
         if (comp) {
@@ -103,7 +105,9 @@ export default class TextMask extends PureComponent {
 
     _onChange = (event) => {
         if (event) {
-            const rawValue = typeof event.target === 'object' ? event.target.value : event.text;
+            const rawValue = typeof event.target === 'object'
+                ? event.target.value
+                : event.text;
             const nextUpdate = this._update({...this.props, value: rawValue});
 
             if (nextUpdate !== null) {

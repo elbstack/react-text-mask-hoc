@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
@@ -23,6 +24,7 @@ export default class InputAdapter extends PureComponent {
         return this.input.selectionEnd;
     }
 
+    // eslint-disable-next-line react/sort-comp
     _setCaretPosition() {
         if (isDocument && this.input === document.activeElement) {
             if (isAndroid === true) {
